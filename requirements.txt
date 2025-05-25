@@ -1,0 +1,10 @@
+dotenv
+langgraph==0.0.62
+langchain==0.1.20
+langchain-groq==0.1.5
+langchain-community==0.0.38
+redis==5.0.4
+python-dotenv==1.0.1
+uvicorn==0.29.0
+fastapi==0.111.0
+asyncio-mqtt==0.16.1
