@@ -311,6 +311,7 @@ class LowLatencyChatbot:
             )
 
             if existing_state:
+                current_msg = state['messages']
                 logger.info("Found existing state, merging...")
                 # Merge with existing state
                 state.update(existing_state)
@@ -322,6 +323,7 @@ class LowLatencyChatbot:
                 if history:
                     logger.info(f"Loaded {len(history)} messages from history")
                     state["messages"] = history
+                    state["messages"].extend(current_msg)
                 else:
                     logger.info("No chat history found")
             else:
@@ -462,8 +464,8 @@ class LowLatencyChatbot:
             logger.info("Starting graph execution")
             result = await self.graph.ainvoke(initial_state)
             logger.info("Graph execution completed")
-            logger.info(f"Final result keys: {list(result.keys())}")
-            logger.info(f"messages: {result['messages']}")
+            # logger.info(f"Final result keys: {list(result.keys())}")
+            # logger.info(f"messages: {result['messages']}")
 
             response_time = time.time() - start_time
 
